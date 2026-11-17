@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://plumber-demo.example/sitemap-index.xml
+Sitemap: https://plumber-demo-wb6b.onrender.com/sitemap-index.xml

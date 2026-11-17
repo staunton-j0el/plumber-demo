@@ -19,5 +19,5 @@ npm run dev
 ## Notes
 
 - The enquiry form does not send data anywhere. Submitting it shows a confirmation in the browser.
-- Canonical URLs use `https://plumber-demo.example`. Change `site` in `astro.config.mjs` when this has a real domain, and update `public/robots.txt` to match.
+- Canonical URLs, Open Graph, and `public/robots.txt` use `https://plumber-demo-wb6b.onrender.com`.
 - Illustrations and icons are original SVG. There are no stock photos.

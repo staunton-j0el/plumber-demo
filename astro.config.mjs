@@ -5,11 +5,10 @@ import tailwindcss from "@tailwindcss/vite";
 
 /**
  * Static demo site for a fictional plumber.
- * `site` is a placeholder origin for canonical URLs and the sitemap.
- * Replace it when the concept is hosted on a real domain.
+ * `site` sets canonical URLs, Open Graph, and the sitemap.
  */
 export default defineConfig({
-  site: "https://plumber-demo.example",
+  site: "https://plumber-demo-wb6b.onrender.com",
   output: "static",
   outDir: "dist",
   trailingSlash: "never",
