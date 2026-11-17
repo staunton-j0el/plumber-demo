@@ -1,0 +1,35 @@
+---
+import HouseArt from "./HouseArt.astro";
+import { business } from "../data/site";
+
+/** Opening pitch, demo notice, and the two calls to action. */
+---
+
+<section class="section" aria-labelledby="hero-heading">
+  <div class="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+    <div>
+      <p class="eyebrow">Finch &amp; Flange · Demo concept</p>
+      <h1 id="hero-heading">
+        Brisbane plumbing, <em>explained in plain English.</em>
+      </h1>
+      <p class="mt-4 max-w-xl text-lg leading-relaxed">
+        Blocked drains, hot water, leaks, gas fitting, and bathroom renovations across Brisbane and South East Queensland.
+      </p>
+      <div class="mt-6 grid gap-3 sm:flex sm:flex-wrap">
+        <a class="btn btn-primary" href={business.phoneHref}>Call now</a>
+        <a class="btn btn-secondary" href="#quote">Request a quote</a>
+      </div>
+      <p class="demo-note mt-5 max-w-xl text-base leading-relaxed">
+        {business.name} is fictional. This is a concept demo by JS Web Services. The call button uses {business.phoneDisplay}, a number reserved for fiction. Prices, reviews, and licence numbers are examples.
+      </p>
+    </div>
+    <figure class="m-0">
+      <div class="overflow-hidden rounded-[1.75rem] border-2 border-line">
+        <HouseArt />
+      </div>
+      <figcaption class="mt-3 text-base text-muted">
+        Original illustration of a Queenslander, a scribbly gum, and the van. Not a photograph.
+      </figcaption>
+    </figure>
+  </div>
+</section>

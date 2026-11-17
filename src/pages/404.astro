@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HouseArt from "../components/HouseArt.astro";
+import { pageTitle } from "../data/site";
+
+const description =
+  "This page is not part of the Finch & Flange Plumbing concept demo by JS Web Services.";
+---
+
+<BaseLayout title={pageTitle("Page not found")} description={description} noindex={true}>
+  <section class="section" aria-labelledby="missing-heading">
+    <div class="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 lg:grid-cols-2">
+      <div>
+        <p class="eyebrow">404 · Demo</p>
+        <h1 id="missing-heading">This page is not part of the demo.</h1>
+        <p class="mt-4 max-w-xl text-lg leading-relaxed">
+          The address may be mistyped, or the page was never built. Finch &amp; Flange Plumbing is still a fictional concept by JS Web Services, and the home page is where the example services live.
+        </p>
+        <div class="mt-6 grid gap-3 sm:flex">
+          <a class="btn btn-primary" href="/">Back to the demo home</a>
+          <a class="btn btn-secondary" href="/#quote">Request a quote</a>
+        </div>
+      </div>
+      <div class="overflow-hidden rounded-[1.75rem] border-2 border-line">
+        <HouseArt />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

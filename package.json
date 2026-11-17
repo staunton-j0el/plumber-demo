@@ -1,0 +1,20 @@
+{
+  "name": "finch-and-flange-plumbing-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Concept demo by JS Web Services for Finch & Flange Plumbing, a fictional Brisbane plumber. Not a real business.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.5",
+    "@fontsource/figtree": "^5.3.0",
+    "@fontsource/fraunces": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.12",
+    "tailwindcss": "^4.3.5"
+  }
+}

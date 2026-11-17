@@ -1,0 +1,18 @@
+---
+import { business } from "../data/site";
+
+/** Top banner for after-hours plumbing, with the fiction number labelled as an example. */
+---
+
+<div class="bg-alert text-paper">
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-3 px-5 py-3 sm:flex-row sm:items-center sm:justify-between">
+    <p class="max-w-3xl text-base leading-snug">
+      <span class="mr-2 inline-block size-2.5 translate-y-[-1px] rounded-full bg-copper-soft" aria-hidden="true"></span>
+      <strong class="font-bold">24/7 plumbing emergencies.</strong>
+      {" "}Example line only — this demo cannot send a plumber. Smell gas? Leave the building without using switches, then call 000 if anyone is in danger.
+    </p>
+    <a class="btn btn-light w-full shrink-0 sm:w-auto" href={business.phoneHref}>
+      Call {business.phoneDisplay}
+    </a>
+  </div>
+</div>

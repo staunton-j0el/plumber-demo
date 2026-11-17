@@ -1,0 +1,72 @@
+---
+import Icon from "./Icon.astro";
+import { business, reasons, steps } from "../data/site";
+
+/** Why a household would call, plus example licence numbers that are labelled as placeholders. */
+---
+
+<section id="why" class="section bg-pine text-paper" aria-labelledby="why-heading">
+  <div class="mx-auto w-full max-w-6xl px-5">
+    <p class="eyebrow on-dark">Why choose us</p>
+    <h2 id="why-heading">Straight answers, a licence you can check, a tidy floor</h2>
+    <p class="mt-3 max-w-2xl text-lg leading-relaxed text-mist">
+      What a household is usually trying to find out before they let someone under the house. On this demo, the licence numbers are placeholders.
+    </p>
+    <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        reasons.map((reason) => (
+          <li class="card">
+            <span class="icon-wrap">
+              <Icon name={reason.icon} />
+            </span>
+            <h3 class="mt-3">{reason.title}</h3>
+            <p class="mt-2 text-base leading-relaxed">{reason.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-8 rounded-[1.25rem] border-2 border-copper-soft bg-pine-deep p-5 sm:p-6">
+      <h3 class="text-2xl text-paper">Example licence and insurance</h3>
+      <p class="mt-2 max-w-3xl text-base leading-relaxed text-mist">
+        These are not real credentials. On a live site, Joel would publish the current QBCC licence and insurance. For a real plumber, search the QBCC register before you pay a deposit.
+      </p>
+      <dl class="mt-5 grid gap-4 sm:grid-cols-3">
+        <div>
+          <dt class="text-sm font-bold tracking-wide text-copper-soft uppercase">QBCC licence</dt>
+          <dd class="mt-1 text-lg font-bold text-paper">
+            {business.qbcc}
+            <span class="badge badge-on-dark ml-2 align-middle">Example only</span>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-sm font-bold tracking-wide text-copper-soft uppercase">Gas work authorisation</dt>
+          <dd class="mt-1 text-lg font-bold text-paper">
+            {business.gasAuthorisation}
+            <span class="badge badge-on-dark ml-2 align-middle">Example only</span>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-sm font-bold tracking-wide text-copper-soft uppercase">Insurance</dt>
+          <dd class="mt-1 text-lg font-bold text-paper">
+            {business.insurance}
+            <span class="badge badge-on-dark ml-2 align-middle">Example only</span>
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+    <h3 class="mt-10 text-2xl">How a job would run</h3>
+    <ol class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        steps.map((step, index) => (
+          <li class="card">
+            <span class="step-number">{index + 1}</span>
+            <h3 class="mt-3 text-xl">{step.title}</h3>
+            <p class="mt-2 text-base leading-relaxed">{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

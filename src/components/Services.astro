@@ -1,0 +1,39 @@
+---
+import Icon from "./Icon.astro";
+import { services } from "../data/site";
+
+/** Service cards. Every price is paired with an Example badge. */
+---
+
+<section id="services" class="section pt-0" aria-labelledby="services-heading">
+  <div class="mx-auto w-full max-w-6xl px-5">
+    <p class="eyebrow">Services</p>
+    <h2 id="services-heading">What we can help with</h2>
+    <p class="mt-3 max-w-2xl text-lg leading-relaxed text-muted">
+      Five jobs a local plumber would list. Dollar figures show how pricing sits on the page. They are examples, not quotes.
+    </p>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+      {
+        services.map((service, index) => (
+          <article
+            class:list={[
+              "card flex flex-col gap-3",
+              index < 3 ? "lg:col-span-2" : "lg:col-span-3",
+            ]}
+          >
+            <span class="icon-wrap">
+              <Icon name={service.icon} />
+            </span>
+            <h3>{service.title}</h3>
+            <p class="text-base leading-relaxed">{service.summary}</p>
+            <p class="mt-auto flex flex-wrap items-center gap-2 pt-2">
+              <span class="badge">Example</span>
+              <span class="text-lg font-bold">{service.price}</span>
+            </p>
+            <p class="text-base text-muted">{service.priceDetail}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

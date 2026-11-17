@@ -1,0 +1,137 @@
+---
+import { serviceOptions } from "../data/site";
+
+/**
+ * Enquiry form that never leaves the browser.
+ * The submit handler only reveals a confirmation. `method="dialog"` is a second
+ * guard so a submit does not navigate or post the fields to a server.
+ */
+---
+
+<section id="quote" aria-labelledby="quote-heading">
+  <p class="eyebrow">Quote</p>
+  <h2 id="quote-heading">Request a quote</h2>
+  <p id="quote-hint" class="mt-3 text-lg leading-relaxed text-muted">
+    Tell us what is going on. On a live site this would reach the plumber. Here it stays in your browser and shows a demo confirmation.
+  </p>
+
+  <form
+    id="quote-form"
+    class="card mt-5"
+    method="dialog"
+    aria-describedby="quote-hint"
+    onsubmit="return false;"
+  >
+    <fieldset>
+      <legend>Your details</legend>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="field">
+          <span class="field-label">Name</span>
+          <input class="control" id="quote-name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="80" />
+        </label>
+        <label class="field">
+          <span class="field-label">Phone</span>
+          <input
+            class="control"
+            id="quote-phone"
+            name="phone"
+            type="tel"
+            inputmode="tel"
+            autocomplete="tel"
+            required
+            minlength="8"
+            maxlength="20"
+            pattern="[0-9+() \-]{8,20}"
+            title="Use digits, spaces, brackets, or a leading plus."
+            placeholder="0491 570 156"
+          />
+        </label>
+        <label class="field">
+          <span class="field-label">Email <span class="font-normal text-muted">(optional)</span></span>
+          <input class="control" id="quote-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="120" />
+        </label>
+        <label class="field">
+          <span class="field-label">Suburb</span>
+          <input class="control" id="quote-suburb" name="suburb" type="text" autocomplete="address-level2" required minlength="2" maxlength="80" placeholder="e.g. West End" />
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>The job</legend>
+      <div class="grid gap-4">
+        <label class="field">
+          <span class="field-label">What do you need?</span>
+          <select class="control" id="quote-service" name="service" required>
+            <option value="">Choose a service</option>
+            {serviceOptions.map((option) => <option value={option}>{option}</option>)}
+          </select>
+        </label>
+        <label class="field">
+          <span class="field-label">Preferred time <span class="font-normal text-muted">(optional)</span></span>
+          <select class="control" id="quote-time" name="time">
+            <option value="">No preference</option>
+            <option>Morning</option>
+            <option>Afternoon</option>
+            <option>Evening</option>
+            <option>As soon as you can</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="field-label">What needs doing?</span>
+          <textarea class="control" id="quote-message" name="message" required minlength="3" maxlength="1000" placeholder="The kitchen drain has been slow all week."></textarea>
+        </label>
+      </div>
+    </fieldset>
+
+    <label class="check-row">
+      <input id="quote-demo" name="demo" type="checkbox" required />
+      <span>I understand this is a demo and nothing I type will be sent.</span>
+    </label>
+
+    <button class="btn btn-primary mt-4 w-full sm:w-auto" type="submit">Request a quote</button>
+    <noscript>
+      <p class="mt-4 text-base leading-relaxed">
+        This confirmation needs JavaScript. With it off, the form still does not send your details anywhere.
+      </p>
+    </noscript>
+  </form>
+
+  <div id="quote-success" class="card mt-5" hidden>
+    <h3 id="quote-thanks" class="text-2xl" tabindex="-1">Thanks — this is as far as the demo goes.</h3>
+    <p class="mt-3 text-lg leading-relaxed">
+      Nothing was sent, and nobody will call you. What you typed stayed in this browser. On a site JS Web Services builds for a real business, the same form would land in their inbox.
+    </p>
+    <button id="quote-again" class="btn btn-secondary mt-5" type="button">Reset the form</button>
+  </div>
+</section>
+
+<script is:inline>
+  // Show a demo confirmation. preventDefault plus method="dialog" keep the fields off the network.
+  (function () {
+    var form = document.getElementById("quote-form");
+    var success = document.getElementById("quote-success");
+    var again = document.getElementById("quote-again");
+    if (!form || !success) return;
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (typeof form.reportValidity === "function" && !form.reportValidity()) {
+        return;
+      }
+      form.setAttribute("hidden", "");
+      success.removeAttribute("hidden");
+      var heading = document.getElementById("quote-thanks");
+      if (heading) heading.focus();
+    });
+
+    if (!again) return;
+    again.addEventListener("click", function () {
+      success.setAttribute("hidden", "");
+      form.removeAttribute("hidden");
+      form.reset();
+      var first = document.getElementById("quote-name");
+      if (first) first.focus();
+    });
+  })();
+</script>

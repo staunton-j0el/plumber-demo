@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import Areas from "../components/Areas.astro";
+import Trust from "../components/Trust.astro";
+import Reviews from "../components/Reviews.astro";
+import Faq from "../components/Faq.astro";
+import QuoteForm from "../components/QuoteForm.astro";
+import MapPanel from "../components/MapPanel.astro";
+import { pageTitle } from "../data/site";
+
+const description =
+  "Concept demo by JS Web Services for Finch & Flange Plumbing, a fictional Brisbane and South East Queensland plumber. Example prices, reviews, and licence numbers.";
+---
+
+<BaseLayout title={pageTitle("")} description={description}>
+  <Hero />
+  <Services />
+  <Areas />
+  <Trust />
+  <Reviews />
+  <Faq />
+  <div class="section">
+    <div class="mx-auto grid w-full max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:items-start">
+      <QuoteForm />
+      <MapPanel />
+    </div>
+  </div>
+</BaseLayout>

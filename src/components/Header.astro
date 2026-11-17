@@ -1,0 +1,48 @@
+---
+import Logo from "./Logo.astro";
+import { business, navItems } from "../data/site";
+
+/** Sticky header with the demo credit, in-page links, and the example phone line. */
+---
+
+<header class="site-header">
+  <div class="mx-auto flex w-full max-w-6xl items-center gap-2 px-5 py-3 lg:gap-4">
+    <a class="logo min-w-0 flex-1" href="/">
+      <Logo />
+      <span class="min-w-0">
+        <span class="logo-name">{business.shortName}</span>
+        <span class="logo-sub">
+          <span class="sm:hidden">Demo</span>
+          <span class="hidden sm:inline">Plumbing · Demo by JS Web Services</span>
+        </span>
+      </span>
+    </a>
+
+    <a class="btn btn-primary shrink-0 lg:hidden" href={business.phoneHref}>
+      Call
+      <span class="sr-only">example number {business.phoneDisplay}</span>
+    </a>
+
+    <details class="nav-details lg:hidden">
+      <summary class="menu-button">
+        <span class="menu-label-closed">Menu</span>
+        <span class="menu-label-open">Close</span>
+      </summary>
+      <nav class="nav-panel" aria-label="Primary">
+        {
+          navItems.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))
+        }
+      </nav>
+    </details>
+
+    <nav class="desktop-nav hidden items-center gap-1 lg:flex" aria-label="Primary">
+      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <a class="btn btn-primary hidden shrink-0 lg:inline-flex" href={business.phoneHref}>
+      Call now
+      <span class="sr-only">on the example number {business.phoneDisplay}</span>
+    </a>
+  </div>
+</header>
